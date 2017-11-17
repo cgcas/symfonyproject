@@ -1,3 +1,4 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+# app/config/routing.yml
+prueba_index:
+    path: /hola
+    defaults: { _controller: AppBundle:Service:index }
