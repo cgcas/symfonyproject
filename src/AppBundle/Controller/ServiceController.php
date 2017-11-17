@@ -10,8 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ServiceController extends Controller
 {
 
-    public function indexAction(My_service $my_service)
+    public function indexAction()
     {
+        $my_service = $this->get(My_service::class);
         $my_service->getHola();
         exit;
     }
