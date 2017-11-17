@@ -16,4 +16,11 @@ class ServiceController extends Controller
         $my_service->getHola();
         exit;
     }
+
+    public function userAction()
+    {
+        $my_service = $this->get(My_service::class);
+        $my_service->newUser();
+        exit;
+    }
 }
