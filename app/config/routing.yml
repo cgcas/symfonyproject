@@ -5,3 +5,6 @@ prueba_index:
 prueba_user:
     path: /user
     defaults: { _controller: AppBundle:Service:user }
+prueba_prueba:
+    path: /
+    defaults: { _controller: AppBundle:Service:cero }

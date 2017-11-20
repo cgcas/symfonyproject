@@ -21,6 +21,11 @@ class ServiceController extends Controller
     {
         $my_service = $this->get(My_service::class);
         $my_service->newUser();
+        echo "Nuevo usuario creado.";
         exit;
+    }
+
+    public function ceroAction(){
+        return $this->render('probando.html.twig');
     }
 }

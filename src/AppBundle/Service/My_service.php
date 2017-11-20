@@ -29,5 +29,6 @@ class My_service
 
         // actually executes the queries (i.e. the INSERT query)
         $this->em->flush();
+        return;
     }
 }

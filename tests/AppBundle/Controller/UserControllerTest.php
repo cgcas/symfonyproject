@@ -4,15 +4,22 @@ namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class UserControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testCreateUser()
     {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
+
+        $link = $crawler
+            ->filter('a')
+            ->eq(0)
+            ->link()
+        ;
+        $crawler = $client->click($link);
+
     }
 }
