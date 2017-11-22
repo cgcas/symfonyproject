@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    {% if guardar == false %}
+        <form action="{{ path('prueba_nuevo') }}" method="post">
+            <label for="usuario">Nombre:</label>
+            <input type="text" name="usuario" id="usuario" />
+            <br/>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" name="descripcion" id="descripcion" />
+            <br/>
+            <input type="submit" name="enviar" id="enviar" value="Enviar" />
+            <br/>
+        </form>
+    {% else %}
+        <h2>Se guardo correctamente.</h2>
+    {% endif %}
+
+    </body>
+</html>

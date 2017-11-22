@@ -31,4 +31,18 @@ class My_service
         $this->em->flush();
         return;
     }
+
+    public function newUserName($name,$des)
+    {
+        $user = new User();
+        $user->setName($name);
+        $user->setDescription($des);
+
+        // tells Doctrine you want to (eventually) save the Product (no queries yet)
+        $this->em->persist($user);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $this->em->flush();
+        return;
+    }
 }

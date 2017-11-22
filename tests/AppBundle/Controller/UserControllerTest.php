@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class UserControllerTest extends WebTestCase
 {
-    public function testCreateUser()
+    public function testIndex()
     {
         $client = static::createClient();
 
@@ -14,12 +14,37 @@ class UserControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $link = $crawler
-            ->filter('a')
-            ->eq(0)
-            ->link()
-        ;
-        $crawler = $client->click($link);
 
     }
+
+    public function testCreateNewUserStatus()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '//newUser');
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+    public function testCreateNewUser()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/newUser');
+
+        $buttonCrawlerNode = $crawler->selectButton('Enviar');
+
+        $form = $buttonCrawlerNode->form(array(
+            'usuario'              => 'Luis',
+            'descripcion'  => 'Doctor Luis',
+        ));
+
+        $client->submit($form);
+
+        $this->assertContains(
+            'Se guardo correctamente',
+            $client->getResponse()->getContent()
+        );
+    }
+
 }

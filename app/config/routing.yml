@@ -8,3 +8,6 @@ prueba_user:
 prueba_prueba:
     path: /
     defaults: { _controller: AppBundle:Service:cero }
+prueba_nuevo:
+    path: /newUser
+    defaults: { _controller: AppBundle:Service:newUser }
